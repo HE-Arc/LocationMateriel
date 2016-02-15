@@ -1,2 +1,17 @@
-<h1>Home#home</h1>
-<p>Find me in app/views/home/home.html.erb</p>
+<table>
+<% Product.all.each do |product| %>
+	<tr>
+		<td rowspan=3><img src='' title='image produit' /></td>
+		<td colspan=1><%= link_to product.title, product %></td>
+	</tr>
+	<tr>
+		<td colspan=1><%= product.description %></td>
+	</tr>
+	<tr>
+		<td><%= product.renter %></td>
+		<td><%= product.price %></td>
+	</tr>	
+<% end %>
+</table>
+
+

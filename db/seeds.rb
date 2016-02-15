@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Product.create(title: 'Test', description: 'Description du test', price: '19.50', renter: 'dista', 
+								date_start: '12/12/2016', date_end: '31/12/2016', condition: '')

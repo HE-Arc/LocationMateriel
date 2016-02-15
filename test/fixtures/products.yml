@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  price: 9.99
+  renter: MyString
+  date_start: 2016-02-15
+  date_end: 2016-02-15
+  condition: MyText
+
+two:
+  title: MyString
+  description: MyText
+  price: 9.99
+  renter: MyString
+  date_start: 2016-02-15
+  date_end: 2016-02-15
+  condition: MyText
