@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+# Thoughtbot's paperclip to upload files
+  gem 'paperclip', '~> 4.3'
+# Framework CSS Materialize
 gem 'materialize-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

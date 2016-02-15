@@ -21,14 +21,20 @@
 	</tr>
 </table>
 
-<!--<table>
+<table>
 	<th>Question(s) : </th>
-	<th><button value="Poser une question" /></th>
+	<th><input type="submit" value="Poser une question" /></th>
+	
+	<tr><td colspan=2><hr/></td></tr>
 
-	<% #questionsProduct do |question| %>
+	<% @product.questions.each do |question| %>
 		<tr>
-			<td>Pseudo</td>
-			<td>Question</td>
+			<td><%= question.asker %></td>
+			<td><%= question.title %></td>
 		</tr>
-	<% #end %>
-</table>-->
+		<tr>
+			<td colspan=1><%= question.question %></td>
+		</tr>
+		<tr><td colspan=2><hr/></td></tr>
+	<% end %>
+</table>

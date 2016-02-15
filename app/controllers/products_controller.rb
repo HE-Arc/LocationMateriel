@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
 	def show
-		@product = Product.find(params[:id])
+		@product = Product.joins(:questions).find(params[:id])
 	end
 end
