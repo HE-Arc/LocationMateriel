@@ -1,0 +1,8 @@
+<%= form_tag(create_question_path, method: "post") do %>
+
+	<%= text_field_tag(:title, "", :placeholder => "Titre") %>
+	<%= text_area_tag(:question, "", size: "24x6", :placeholder => "Question(s) ?") %>
+	<%= hidden_field_tag(:product_id, @product.id) %>
+
+	<%= submit_tag("Poser la question", :class => "btn") %>
+<% end %>

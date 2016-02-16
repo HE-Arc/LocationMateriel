@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'home#home'
 
   get '/products/:id' => 'products#show', as: :product
+  get '/products/:id/new_question' => 'questions#new', as: :new_question
+  
+  post '/questions' => 'questions#create', as: :create_question
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

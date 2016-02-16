@@ -14,7 +14,7 @@
 					<td><%= @product.price %></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Louer l'article" /></td>
+					<td><%= link_to "Louer l'article", "", {:class => "btn"} %></td>
 				</tr>
 			</table>
 		</td>
@@ -23,7 +23,7 @@
 
 <table>
 	<th>Question(s) : </th>
-	<th><input type="submit" value="Poser une question" /></th>
+	<th><%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %></th>
 	
 	<tr><td colspan=2><hr/></td></tr>
 
