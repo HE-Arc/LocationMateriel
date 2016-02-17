@@ -28,6 +28,10 @@ test:
   <<: *default
   database: app_test
 
+staging:
+  <<: *default
+  database: app_prod
+
 production:
   <<: *default
   database: app_prod
