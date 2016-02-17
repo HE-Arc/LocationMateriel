@@ -41,11 +41,12 @@ server 'srvz-webapp.he-arc.ch', user: 'leonardo', roles: %w{app db web}
 #
 # Global options
 # --------------
-#  set :ssh_options, {
+set :ssh_options, {
+  port: 2001
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
 #    auth_methods: %w(password)
-#  }
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------

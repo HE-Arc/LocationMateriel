@@ -1,40 +1,40 @@
 <table border='1'>
-	<tr>
-		<td><img src="" title="img" /></td>
-		<td>
-			<table>
-				<tr>
-					<td><%= @product.title %></td>
-				</tr>
-				<tr>
-					<td><%= @product.description %></td>
-				</tr>
-				<tr>
-					<td><%= @product.renter %></td>
-					<td><%= @product.price %></td>
-				</tr>
-				<tr>
-					<td><%= link_to "Louer l'article", "", {:class => "btn"} %></td>
-				</tr>
-			</table>
-		</td>
-	</tr>
+  <tr>
+    <td><img src="" title="img" /></td>
+    <td>
+      <table>
+        <tr>
+          <td><%= @product.title %></td>
+        </tr>
+        <tr>
+          <td><%= @product.description %></td>
+        </tr>
+        <tr>
+          <td><%= @product.renter %></td>
+          <td><%= @product.price %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "Louer l'article", "", {:class => "btn"} %></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 
 <table>
-	<th>Question(s) : </th>
-	<th><%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %></th>
-	
-	<tr><td colspan=2><hr/></td></tr>
+  <th>Question(s) : </th>
+  <th><%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %></th>
+  
+  <tr><td colspan=2><hr/></td></tr>
 
-	<% @product.questions.each do |question| %>
-		<tr>
-			<td><%= question.asker %></td>
-			<td><%= question.title %></td>
-		</tr>
-		<tr>
-			<td colspan=1><%= question.question %></td>
-		</tr>
-		<tr><td colspan=2><hr/></td></tr>
-	<% end %>
+  <% @product.questions.each do |question| %>
+    <tr>
+      <td><%= question.asker %></td>
+      <td><%= question.title %></td>
+    </tr>
+    <tr>
+      <td colspan=1><%= question.question %></td>
+    </tr>
+    <tr><td colspan=2><hr/></td></tr>
+  <% end %>
 </table>

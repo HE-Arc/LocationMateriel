@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'RentArt'
-set :repo_url, 'leonardodistasio@github.com/HE-Arc/LocationMateriel.git'
+set :application, 'app'
+set :repo_url, 'https://github.com/HE-Arc/LocationMateriel.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -45,7 +45,7 @@ namespace :deploy do
   #  end
   #end
 
-  after :finished :restart_puma do
+  after :finished, :restart_puma do
     on roles(:web) do
       execute :sudo, 'sv restart puma'
     end
