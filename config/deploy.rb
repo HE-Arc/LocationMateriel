@@ -51,4 +51,9 @@ namespace :deploy do
     end
   end
 
+  prefix = 'source ~/.bash_profile;' 
+  [:bundle, :rake, :rails].each do |cmd|
+    SSHKit.config.command_map.prefix[cmd].push(prefix)
+  end
+
 end

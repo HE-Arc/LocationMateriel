@@ -30,8 +30,14 @@ test:
 
 staging:
   <<: *default
-  database: app_prod
+  database: <%= ENV['POSTGRES_USERNAME'] %>
+  user: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+
 
 production:
   <<: *default
-  database: app_prod
+  database: <%= ENV['POSTGRES_USERNAME'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  schema_earch_path: production
