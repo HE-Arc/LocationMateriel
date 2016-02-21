@@ -7,4 +7,10 @@ class Product < ActiveRecord::Base
   validates_presence_of :renter
   validates_presence_of :date_start
   validates_presence_of :date_end
+
+  has_attached_file :image,
+                    styles: {medium: '250x250', thumb: '125x125'},
+                    default_url: 'default.png'
+
+  validates_attachment_content_type :image, content_type: /^image\/.*$/
 end
