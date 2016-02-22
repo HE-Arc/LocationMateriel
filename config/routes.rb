@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :tenants
   root 'home#home'
 
   get '/products/:id' => 'products#show', as: :product
   get '/products/:id/new_question' => 'questions#new', as: :new_question
+  get '/products/:id/location' => 'products#location', as: :location_article
   
   post '/questions' => 'questions#create', as: :create_question
 
