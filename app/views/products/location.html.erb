@@ -1,0 +1,66 @@
+<%= form_tag(create_tenant_path, method: "post") do %>
+<section class="section col s12">
+  <article class="col s6">
+    <p class="field">
+        <%= label_tag :lastname, 'Nom : ' %>
+        <%= text_field_tag(:lastname, "", :placeholder => "Nom") %>
+    </p>
+
+    <p class="field">
+        <%= label_tag :firstname, 'Prénom : ' %>
+        <%= text_field_tag(:firstname, "", :placeholder => "Prénom") %>
+    </p>
+
+    <p class="field">
+        <%= label_tag :email, 'E-Mail : ' %>
+        <%= text_field_tag(:email, "", :placeholder => "E-Mail") %>
+    </p>
+
+    <p class="field">
+        <%= label_tag :address, 'Adresse : ' %>
+        <%= text_field_tag(:address, "", :placeholder => "Adresse") %>
+    </p>
+
+    <p class="field">
+        <span class="col s4">
+          <%= label_tag :npa, 'NPA : ' %>
+          <%= text_field_tag(:npa, "", :placeholder => "NPA") %>
+        </span>
+        <span class="col s8">
+          <%= label_tag :city, 'Ville : ' %>
+          <%= text_field_tag(:city, "", :placeholder => "Ville") %>
+        </span>
+    </p>
+  </article>
+
+  <aside class="col push-s1 s5">
+    <p class="field">
+      <%= label_tag :date_start, 'Début : ' %>
+      <%= date_field(:date, :start) %>
+    </p>
+
+    <p class="field">
+      <%= label_tag :date_end, 'Fin : ' %>
+      <%= date_field(:date, :end) %>
+    </p>
+
+    <p class="field">
+      <%= label_tag :utilisation, 'Utilisation : ' %>
+      <%= text_area_tag(:utilisation, "", :placeholder => "Que voulez-vous faire de cette article ?", size: "24x18", :class => "materialize-textarea") %>
+    </p>
+  </aside>
+</section>
+
+<section class="section col s12">
+  <div class="divider"></div>
+  <p class="field">
+    <%= label_tag :condition, 'Condition d\'utilisation' %>
+    <%= text_area_tag(:condition, @product.condition, size: "24x18", :class => "materialize-textarea", disabled:true) %>
+  </p>
+</section>
+
+<%= hidden_field_tag(:product_id, @product.id) %>
+
+<%= submit_tag("Envoyer la demande", :class => "btn") %>
+
+<% end %>

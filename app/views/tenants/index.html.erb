@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Tenants</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Lastname</th>
+      <th>Firstname</th>
+      <th>Adress</th>
+      <th>Npa</th>
+      <th>City</th>
+      <th>Email</th>
+      <th>Date start</th>
+      <th>Date end</th>
+      <th>Utilisation</th>
+      <th>Produit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tenants.each do |tenant| %>
+      <tr>
+        <td><%= tenant.lastname %></td>
+        <td><%= tenant.firstname %></td>
+        <td><%= tenant.address %></td>
+        <td><%= tenant.npa %></td>
+        <td><%= tenant.city %></td>
+        <td><%= tenant.email %></td>
+        <td><%= tenant.date_start %></td>
+        <td><%= tenant.date_end %></td>
+        <td><%= tenant.utilisation %></td>
+        <td><%= tenant.product_id %></td>
+        <td><%= link_to 'Show', tenant %></td>
+        <td><%= link_to 'Edit', edit_tenant_path(tenant) %></td>
+        <td><%= link_to 'Destroy', tenant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tenant', new_tenant_path %>

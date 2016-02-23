@@ -1,0 +1,53 @@
+<%= form_for(@tenant) do |f| %>
+  <% if @tenant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tenant.errors.count, "error") %> prohibited this tenant from being saved:</h2>
+
+      <ul>
+      <% @tenant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lastname %><br>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="field">
+    <%= f.label :firstname %><br>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :adress %>
+  </div>
+  <div class="field">
+    <%= f.label :npa %><br>
+    <%= f.text_field :npa %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :date_start %><br>
+    <%= f.date_select :date_start %>
+  </div>
+  <div class="field">
+    <%= f.label :date_end %><br>
+    <%= f.date_select :date_end %>
+  </div>
+  <div class="field">
+    <%= f.label :utilisation %><br>
+    <%= f.text_area :utilisation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,66 @@
+<%= form_for @tenant, url: {action: "create"} do |t| %>
+<section class="section col s12">
+  <article class="col s6">
+    <p class="field">
+        <%= t.label :lastname, 'Nom : ' %>
+        <%= t.text_field :lastname, :placeholder => "Nom" %>
+    </p>
+
+    <p class="field">
+        <%= t.label :firstname, 'Prénom : ' %>
+        <%= t.text_field(:firstname, :placeholder => "Prénom") %>
+    </p>
+
+    <p class="field">
+        <%= t.label :email, 'E-Mail : ' %>
+        <%= t.text_field(:email, :placeholder => "E-Mail") %>
+    </p>
+
+    <p class="field">
+        <%= t.label :address, 'Adresse : ' %>
+        <%= t.text_field(:address, :placeholder => "Adresse") %>
+    </p>
+
+    <p class="field">
+        <span class="col s4">
+          <%= t.label :npa, 'NPA : ' %>
+          <%= t.text_field(:npa, :placeholder => "NPA") %>
+        </span>
+        <span class="col s8">
+          <%= t.label :city, 'Ville : ' %>
+          <%= t.text_field(:city, :placeholder => "Ville") %>
+        </span>
+    </p>
+  </article>
+
+  <aside class="col push-s1 s5">
+    <p class="field">
+      <%= t.label :date_start, 'Début : ' %>
+      <%= t.date_field(:date_start) %>
+    </p>
+
+    <p class="field">
+      <%= t.label :date_end, 'Fin : ' %>
+      <%= t.date_field(:date_end) %>
+    </p>
+
+    <p class="field">
+      <%= t.label :utilisation, 'Utilisation : ' %>
+      <%= t.text_area(:utilisation, :placeholder => "Que voulez-vous faire de cette article ?", size: "24x18", :class => "materialize-textarea") %>
+    </p>
+  </aside>
+</section>
+
+<section class="section col s12">
+  <div class="divider"></div>
+  <p class="field">
+    <%= label_tag :condition, 'Condition d\'utilisation' %>
+    <%= text_area_tag(:condition, @product.condition, size: "24x18", :class => "materialize-textarea", disabled:true) %>
+  </p>
+</section>
+
+<%= t.hidden_field(:product_id, :value => @product.id) %>
+
+<%= submit_tag("Envoyer la demande", :class => "btn") %>
+
+<% end %>

@@ -1,6 +1,6 @@
 <section class="row">
   <aside class="col s6">
-    <%= image_tag @product.image.url(:thumb), size:"250" %>
+    <%= image_tag @product.image.url(:thumb) %>
   </aside>
 
   <article class="col s6">
@@ -8,31 +8,42 @@
     <span class="row col s12"><%= @product.description %></span>
     <span class="row col s12"><%= @product.renter %></span>
     <span class="col s6"><%= number_to_currency(@product.price) %></span>
-    <span class="col s6"><%= link_to "Louer l'article", location_article_path(@product), {:class => "btn"} %><span>
+    <span class="col s6">
+
+      <%= link_to raw("<i class=\"material-icons\">shopping_cart</i> Louer l'article"), location_article_path(@product), {:class => "btn"} %><span>
   </article>
 </section>
 
 <div class="section">
   <p>
     Question(s) :
-    <%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %>
+    <%= link_to raw("<i class=\"material-icons\">question_answer</i> Poser une question"), new_question_path(@product), {:class => "btn" } %>
   </p>
   <div class="divider"></div>
 </div>
 
 <% @product.questions.each do |question| %>
 <div class="row">
-  <div class="section">
-    <div class="col s6">
+  <div class="row">
+    <div class="col s4">
       <%= question.asker %>
     </div>
-    <div class="col s6">
+    <div class="col s4">
       <%= question.title %>
     </div>
-  </div>
+    <div class="col s4">
+      <%= question.date %>
+    </div>
+
+  <p class="row">
+    <span class="col s2 red-text">Question : </span>
+    <span class="col s10"><%= question.question %></span>
   <p>
-    <%= question.question %>
-  <p>
+    
+  <p class="row">
+    <span class="col s2 green-text">Réponse : </span>
+    <span class="col s10"><%= question.answer %></span>
+  </p>
   <div class="divider"></div>
 </div>
 <% end %>

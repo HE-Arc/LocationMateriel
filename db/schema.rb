@@ -33,8 +33,10 @@ ActiveRecord::Schema.define(version: 20160222125247) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "question"
+    t.text     "question"
+    t.text     "answer"
     t.string   "asker"
+    t.string   "email"
     t.datetime "date"
     t.string   "title"
     t.integer  "product_id"

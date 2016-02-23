@@ -24,18 +24,22 @@ Product.create(title: 'Prod2',
 
 Question.create(question: 'est-ce que ca marche ?',
 								asker: 'user1',
+								answer: 'Oui bien sûr que ça marche !',
+								email: 'user1@gmail.com',
 								date: '12/12/2012 05:12:40',
 								title: 'Test question',
 								product_id: 1)
 
 Question.create(question: 'Possible de l\'avoir en blanc ?',
 								asker: 'user2',
+								email: 'user2@gmail.com',
 								date: '12/12/2012 08:12:40',
 								title: 'Question2',
 								product_id: 1)
 
 Question.create(question: 'Atchoum ?',
 								asker: 'user3',
+								email: 'user3@gmail.com',
 								date: '12/12/2012 10:12:40',
 								title: 'Question 3',
 								product_id: 2)
