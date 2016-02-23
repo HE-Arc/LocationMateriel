@@ -5,9 +5,11 @@ Rails.application.routes.draw do
 
   get '/products/:id' => 'products#show', as: :product
   get '/products/:id/new_question' => 'questions#new', as: :new_question
-  get '/products/:id/location' => 'products#location', as: :location_article
+  get '/products/:id/location' => 'tenants#new', as: :location_article
   
   post '/questions' => 'questions#create', as: :create_question
+
+  post '/products/:id/location' => 'tenants#create', as: :create_tenant
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

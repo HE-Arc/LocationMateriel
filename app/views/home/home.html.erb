@@ -1,17 +1,21 @@
-<table>
+<section class="section">
+  <div class="divider"></div>
 <% Product.all.each do |product| %>
-  <tr>
-    <td rowspan=3><img src='' title='image produit' /></td>
-    <td colspan=1><%= link_to product.title, product %></td>
-  </tr>
-  <tr>
-    <td colspan=1><%= product.description %></td>
-  </tr>
-  <tr>
-    <td><%= product.renter %></td>
-    <td><%= product.price %></td>
-  </tr> 
+  <article class="row">
+    <aside class="col s4">
+    <%= image_tag product.image.url(:thumb), size:"125" %>
+    </aside>
+
+    <span class="row col s8">
+      <span class="row col s12"><%= link_to product.title, product %></span>
+      <span class="row col s12"><%= product.description %></span>
+      <span class="col s6"><%= product.renter %></span>
+      <span class="col s6"><%= number_to_currency product.price %></span>
+    </span>
+  </article>
+
+  <div class="divider"></div>
 <% end %>
-</table>
+</section>
 
 

@@ -1,40 +1,38 @@
-<table border='1'>
-  <tr>
-    <td><%= image_tag @product.image.url() %></td>
-    <td>
-      <table>
-        <tr>
-          <td><%= @product.title %></td>
-        </tr>
-        <tr>
-          <td><%= @product.description %></td>
-        </tr>
-        <tr>
-          <td><%= @product.renter %></td>
-          <td><%= number_to_currency(@product.price) %></td>
-        </tr>
-        <tr>
-          <td><%= link_to "Louer l'article", location_article_path(@product), {:class => "btn"} %></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+<section class="row">
+  <aside class="col s6">
+    <%= image_tag @product.image.url(:thumb), size:"250" %>
+  </aside>
 
-<table>
-  <th>Question(s) : </th>
-  <th><%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %></th>
-  
-  <tr><td colspan=2><hr/></td></tr>
+  <article class="col s6">
+    <span class="row col s12"><%= @product.title %></span>
+    <span class="row col s12"><%= @product.description %></span>
+    <span class="row col s12"><%= @product.renter %></span>
+    <span class="col s6"><%= number_to_currency(@product.price) %></span>
+    <span class="col s6"><%= link_to "Louer l'article", location_article_path(@product), {:class => "btn"} %><span>
+  </article>
+</section>
 
-  <% @product.questions.each do |question| %>
-    <tr>
-      <td><%= question.asker %></td>
-      <td><%= question.title %></td>
-    </tr>
-    <tr>
-      <td colspan=1><%= question.question %></td>
-    </tr>
-    <tr><td colspan=2><hr/></td></tr>
-  <% end %>
-</table>
+<div class="section">
+  <p>
+    Question(s) :
+    <%= link_to "Poser une question", new_question_path(@product), {:class => "btn" } %>
+  </p>
+  <div class="divider"></div>
+</div>
+
+<% @product.questions.each do |question| %>
+<div class="row">
+  <div class="section">
+    <div class="col s6">
+      <%= question.asker %>
+    </div>
+    <div class="col s6">
+      <%= question.title %>
+    </div>
+  </div>
+  <p>
+    <%= question.question %>
+  <p>
+  <div class="divider"></div>
+</div>
+<% end %>

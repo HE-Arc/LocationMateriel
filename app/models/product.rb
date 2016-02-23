@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :questions, class_name: "Question"
+  has_one :tenants, class_name: "Tenant"
 
   validates_presence_of :title
   validates_presence_of :description
@@ -10,7 +11,7 @@ class Product < ActiveRecord::Base
 
   has_attached_file :image,
                     styles: {medium: '250x250', thumb: '125x125'},
-                    default_url: 'default.png'
+                    default_url: ':style/default.png'
 
   validates_attachment_content_type :image, content_type: /^image\/.*$/
 end
