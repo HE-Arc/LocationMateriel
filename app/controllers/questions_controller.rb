@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
     if @question.save
       @product = Product.joins(:questions).find(@question.product_id)
 
-      ProductMailer.new_question_email(@question, @product).deliver_now
+      ProductMailer.new_question_email(@question, @product).deliver_later
 
       redirect_to @product
     else
