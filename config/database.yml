@@ -39,5 +39,5 @@ production:
   <<: *default
   database: <%= ENV['POSTGRES_USERNAME'] %>
   username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  password: <%= ENV['POSTGRES__PASSWORD'] %>
   schema_earch_path: production

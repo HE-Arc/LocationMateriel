@@ -32,8 +32,12 @@ class TenantsController < ApplicationController
 
     respond_to do |format|
       if @tenant.save
-        format.html { redirect_to @tenant, notice: 'Tenant was successfully created.' }
-        format.json { render :show, status: :created, location: @tenant }
+        @product = Product.joins(:questions).find(@tenant.product_id)
+
+        ProductMailer.tenant_proposed_location(@tenant, @product).deliver_later
+
+        format.html { redirect_to @product, notice: 'La demande a bien été envoyée.' }
+        format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
         format.json { render json: @tenant.errors, status: :unprocessable_entity }
