@@ -1,0 +1,31 @@
+                      <h1>RentArt</h1>
+
+<h3>Demande de location de l'article : <%= @product.title %></h3>
+
+<p>
+  L'utilisateur <%= @tenant.firstname + " " + @tenant.lastname %> vous propose de louer votre article du <%= @tenant.date_start %> au <%= @tenant.date_end %>.
+</p>
+
+<p>
+  Il souhaite utiliser l'article <%= @product.title %> pour :
+  <br/><br/>
+  <%= @tenant.utilisation %>
+</p>
+
+<p>
+  Voici les données personnels de la personne à contacter : <br/>
+
+  <table>
+    <tr>
+      <td>Nom et prénom : </td><td><%= @tenant.lastname + " " +@tenant.firstname %></td>
+    </tr>
+    <tr>
+      <td>Adresse : </td><td><%= @tenant.address %></td>
+    </tr>
+    <tr>
+      <td>Ville et NPA : </td><td><%= @tenant.city + " " + @tenant.npa %></td>
+    </tr>
+    <tr>
+      <td>E-mail : </td><td><%= @tenant.email %></td>
+    </tr>
+</p>

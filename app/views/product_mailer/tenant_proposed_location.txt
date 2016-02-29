@@ -1,0 +1,22 @@
+                      RentArt
+
+================================================================
+
+L'utilisateur <%= @tenant.firstname + " " + @tenant.lastname %> 
+vous propose de louer votre article du <%= @tenant.date_start %> 
+au <%= @tenant.date_end %>.
+
+================================================================
+
+
+Il souhaite utiliser l'article <%= @product.title %> pour :
+
+<%= @tenant.utilisation %>
+
+
+Voici les données personnels de la personne à contacter :
+
+Nom et prénom : <%= @tenant.lastname + " " +@tenant.firstname %>
+Adresse :       <%= @tenant.address %>
+Ville et NPA :  <%= @tenant.city + " " + @tenant.npa %>
+E-mail :        <%= @tenant.email %>
