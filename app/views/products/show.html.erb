@@ -1,9 +1,9 @@
 <section class="row">
-  <aside class="col s6">
-    <%= image_tag @product.image.url(:thumb) %>
+  <aside class="col s12 m12 l6">
+    <%= image_tag @product.image.url(:thumb), {:class => "responsive-img"} %>
   </aside>
 
-  <article class="col s6">
+  <article class="col s12 m12 l6">
     <span class="row col s12"><%= @product.title %></span>
     <span class="row col s12"><%= @product.description %></span>
     <span class="row col s12"><%= @product.renter %></span>
@@ -16,8 +16,8 @@
 
 <div class="section">
   <p class="row">
-    <span class="col s8">Question(s) :</span>
-    <span class="col s4"><%= link_to raw("<i class=\"material-icons\">question_answer</i> Poser une question"), new_question_path(@product), {:class => "btn" } %></span>
+    <span class="col s12 m6 l8">Question(s) :</span>
+    <span class="col s12 m6 l4"><%= link_to raw("<i class=\"material-icons\">question_answer</i> Poser une question"), new_question_path(@product), {:class => "btn" } %></span>
   </p>
   <div class="divider"></div>
 </div>
@@ -25,14 +25,14 @@
 <% @product.questions.each do |question| %>
 <div class="row">
   <div class="row">
-    <div class="col s4">
+    <div class="col s6 m4">
       <%= question.asker %>
     </div>
-    <div class="col s4">
+    <div class="col s6 m4">
       <%= question.title %>
     </div>
-    <div class="col s4">
-      <%= question.date %>
+    <div class="col s12 m4">
+      <%= question.date.strftime("%d.%m.%Y à %H:%M") %>
     </div>
   </div>
 

@@ -14,15 +14,22 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.date = DateTime.now
 
-    if @question.save
-      @product = Product.joins(:questions).find(@question.product_id)
+    respond_to do |format|
+      if @question.save
+        @product = Product.joins(:questions).find(@question.product_id)
 
-      ProductMailer.new_question_email(@question, @product).deliver_later
+        ProductMailer.new_question_email(@question, @product).deliver_later
 
-      redirect_to @product
-    else
-      @product = Product.find(@question.product_id)
-      render action: 'new'
+        format.html { redirect_to @product, notice: 'La question a bien été posée.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        @product = Product.find(@question.product_id)
+
+        format.html { render action: 'new' }
+        format.json { render json: @question.errors, status: :unprocessable_entity }
+
+        
+      end
     end
   end
 
