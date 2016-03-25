@@ -19,6 +19,19 @@ class TenantsController < ApplicationController
       @product = Product.find(params[:id])
     end
     @tenant = Tenant.new
+
+    tenantsExitIds = Tenant.where(product: @product)
+    @tenantExisting = Tenant.where(id: tenantsExitIds)
+
+    @events = []
+    @tenantExisting.each do |t|
+      @events << {:id => t.id, :title => "Loué", :start => "#{t.date_start}",:end => "#{t.date_end}" }
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @events }
+    end
   end
 
   # GET /tenants/1/edit
@@ -29,17 +42,16 @@ class TenantsController < ApplicationController
   # POST /tenants.json
   def create
     @tenant = Tenant.new(tenant_params)
+    @product = Product.joins(:questions).find(@tenant.product_id)
 
     respond_to do |format|
       if @tenant.save
-        @product = Product.joins(:questions).find(@tenant.product_id)
-
         ProductMailer.tenant_proposed_location(@tenant, @product).deliver_later
 
         format.html { redirect_to @product, notice: 'La demande a bien été envoyée.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { render action: 'new' }
         format.json { render json: @tenant.errors, status: :unprocessable_entity }
       end
     end

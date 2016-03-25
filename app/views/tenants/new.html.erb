@@ -2,42 +2,61 @@
   <h2>Location de l'article : <%= @product.title %></h2>
 </section>
 
+<% if @tenant.errors.any? %>
+  <div class="section">
+    <% @tenant.errors.messages.values.each do |message| %>
+      <p>
+        <% message.each do |m| %>
+          <span class="red-text"><%= m %></span>
+        <% end %>
+      </p>
+    <% end %>      
+    <div class="divider"></div>
+  </div>
+<% end %>
+
+<div id="element_calendar">
+  <span class="url_json"><%= location_article_path(@product) %></span>
+  <span class="start_date"><%= @product.date_start %></span>
+</div>
+
 <%= form_for @tenant, url: {action: "create"} do |t| %>
 <section class="section col s12">
-  <article class="col s6">
-    <p class="field">
-        <%= t.label :lastname, 'Nom : ' %>
-        <%= t.text_field :lastname, :placeholder => "Nom" %>
+  <article class="col s12 m6">
+    <p class="input-field">
+        <%= t.label :lastname, 'Nom' %>
+        <%= t.text_field :lastname %>
     </p>
 
-    <p class="field">
-        <%= t.label :firstname, 'Prénom : ' %>
-        <%= t.text_field(:firstname, :placeholder => "Prénom") %>
+    <p class="input-field">
+        <%= t.label :firstname, 'Prénom' %>
+        <%= t.text_field(:firstname) %>
     </p>
 
-    <p class="field">
-        <%= t.label :email, 'E-Mail : ' %>
-        <%= t.text_field(:email, :placeholder => "E-Mail") %>
+    <p class="input-field">
+        <%= t.label :email, 'E-Mail' %>
+        <%= t.text_field(:email) %>
     </p>
 
-    <p class="field">
+    <p class="input-field">
         <%= t.label :address, 'Adresse : ' %>
-        <%= t.text_field(:address, :placeholder => "Adresse") %>
+        <%= t.text_field(:address) %>
     </p>
 
     <p class="field">
         <span class="col s4">
           <%= t.label :npa, 'NPA : ' %>
-          <%= t.text_field(:npa, :placeholder => "NPA") %>
+          <%= t.text_field(:npa) %>
         </span>
         <span class="col s8">
-          <%= t.label :city, 'Ville : ' %>
-          <%= t.text_field(:city, :placeholder => "Ville") %>
+          <%= t.label :city, 'Ville' %>
+          <%= t.text_field(:city) %>
         </span>
     </p>
   </article>
 
-  <aside class="col push-s1 s5">
+  <aside class="col s12 push-m1 m5">
+    <div id="calendar"></div>
     <p class="field">
       <%= t.label :date_start, 'Début : ' %>
       <%= t.date_field(:date_start) %>
@@ -47,12 +66,14 @@
       <%= t.label :date_end, 'Fin : ' %>
       <%= t.date_field(:date_end) %>
     </p>
-
-    <p class="field">
-      <%= t.label :utilisation, 'Utilisation : ' %>
-      <%= t.text_area(:utilisation, :placeholder => "Que voulez-vous faire de cette article ?", size: "24x18", :class => "materialize-textarea") %>
-    </p>
   </aside>
+</section>
+
+<section class="section col s12">
+    <p class="field">
+      <%= t.label :utilisation, 'Utilisation de l\'article' %>
+      <%= t.text_area(:utilisation, size: "24x18", :class => "materialize-textarea") %>
+    </p>
 </section>
 
 <section class="section col s12">

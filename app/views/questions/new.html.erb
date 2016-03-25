@@ -14,21 +14,21 @@
 
 <%= form_for @question, url: {action: "create"} do |q| %>
 
-  <div class="row">
-    <span class="col s2"><i class="material-icons prefix">perm_identity</i><%= q.label :asker, "Pseudo : " %></span>
-    <span class="col s10"><%= q.text_field(:asker, :placeholder => "Pseudo") %></span>
+  <div class="input-field">
+    <i class="material-icons prefix">perm_identity</i><%= q.label :asker, "Pseudo" %>
+    <%= q.text_field :asker %>
   </div>
-  <div>
-    <span class="col s2"><i class="material-icons prefix">email</i><%= q.label :email, "E-Mail : " %></span>
-    <span class="col s10"><%= q.email_field(:email, :placeholder => "E-Mail") %></span>
+  <div class="input-field">
+    <i class="material-icons prefix">email</i><%= q.label :email, "E-Mail" %>
+    <%= q.email_field :email %>
   </div>
-  <div>
-    <span class="col s2"><i class="material-icons prefix">label_outline</i><%= q.label :title, "Titre : " %></span>
-    <span class="col s10"><%= q.text_field(:title, :placeholder => "Titre") %></span>
+  <div class="input-field">
+    <i class="material-icons prefix">label_outline</i><%= q.label :title, "Titre" %>
+    <%= q.text_field(:title) %>
   </div>
-  <div class="row">
-    <span class="col s2"><i class="material-icons prefix">mode_edit</i><%= q.label :question, "Question : " %></span>
-    <span class="col s10"><%= q.text_area(:question, size: "24x6", :placeholder => "Question(s) ?", :style => "resize:none", :class => "materialize-textarea") %></span>
+  <div class="input-field">
+    <i class="material-icons prefix">mode_edit</i><%= q.label :question, "Question" %>
+    <%= q.text_area(:question, size: "24x6", :style => "resize:none", :class => "materialize-textarea") %>
   </div>
   <%= q.hidden_field(:product_id, :value => @product.id) %>
 

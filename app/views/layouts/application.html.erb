@@ -14,26 +14,21 @@
     <% end %>
   <% end -%>
 
-  <nav>
-    <div class="nav-wrapper">
-      <ul data-activates="mobile" id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Accueil</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <ul data-activates="mobile" id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="/">Accueil</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <head>
+    <%= yield :head %>
+  </head>
 
   <div class="row">
-
-    <!--<div class="col s12 m4 l3 grey lighten-1">
-      <!-- Menu de catégorie 
-      <ul>
-        <li>Catégorie 1</li>
-        <li>Catégorie 2</li>
-        <li>Catégorie 3</li>
-        <li>Catégorie 4</li>
-        <li>Catégorie 5</li>
-      </ul>
-    </div>-->
 
     <div class="col s0 m2"><p></p></div>
     <div class="col s12 m8">

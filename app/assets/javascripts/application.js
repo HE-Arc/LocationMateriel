@@ -14,4 +14,32 @@
 //= require materialize-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang-all
+
+$(document).ready(function(){
+
+  $('#element_calendar').hide();
+  $('.carousel').carousel();
+  $('.parallax').parallax();
+
+  $('#calendar').fullCalendar(
+  {
+      events: $('.url_json').html(),
+
+      defaultDate: $('.start_date').html(),
+
+      header:
+      {
+        left: '',
+        center: 'title'
+      },
+
+      firstDay:1,
+      theme:false,
+      selectable:true,
+      lang: 'fr-ch'
+  });
+})

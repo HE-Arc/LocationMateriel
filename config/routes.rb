@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/products/:id' => 'products#show', as: :product
   get '/products/:id/new_question' => 'questions#new', as: :new_question
-  get '/products/:id/location' => 'tenants#new', as: :location_article
+  get '/tenants/new/:id' => 'tenants#new', as: :location_article
   
   post '/questions' => 'questions#create', as: :create_question
 

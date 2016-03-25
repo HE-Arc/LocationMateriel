@@ -4,26 +4,29 @@
   </aside>
 
   <article class="col s12 m12 l6">
-    <span class="row col s12"><%= @product.title %></span>
-    <span class="row col s12"><%= @product.description %></span>
-    <span class="row col s12"><%= @product.renter %></span>
-    <span class="col s6"><%= number_to_currency(@product.price) %></span>
-    <span class="col s6">
+    <div class="card-panel blue lighten-2 white-text">
+      <div class="row"><h3><%= @product.title %></h3></div>
+      <div class="row"><%= @product.description %></div>
+      <div class="row"><%= @product.renter %></div>
+      <div class="row"><%= number_to_currency(@product.price) %> / jour</div>
+      <div class="row">
 
-      <%= link_to raw("<i class=\"material-icons\">shopping_cart</i> Louer l'article"), location_article_path(@product), {:class => "btn"} %><span>
+        <%= link_to raw("<i class=\"material-icons\">shopping_cart</i> Louer l'article"), location_article_path(@product), {:class => "btn"} %>
+      </div>
+    </div>
   </article>
 </section>
 
-<div class="section">
+<div class="section blue lighten-2 white-text">
   <p class="row">
     <span class="col s12 m6 l8">Question(s) :</span>
     <span class="col s12 m6 l4"><%= link_to raw("<i class=\"material-icons\">question_answer</i> Poser une question"), new_question_path(@product), {:class => "btn" } %></span>
   </p>
-  <div class="divider"></div>
 </div>
 
 <% @product.questions.each do |question| %>
 <div class="row">
+
   <div class="row">
     <div class="col s6 m4">
       <%= question.asker %>
