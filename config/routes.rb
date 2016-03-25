@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   post '/questions' => 'questions#create', as: :create_question
 
-  post '/products/:id/location' => 'tenants#create', as: :create_tenant
+  post '/tenants/new/:id' => 'tenants#create', as: :create_tenant
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

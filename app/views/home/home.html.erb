@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <div class="parallax-container">
-    <div class="parallax"><img src="http://lorempixel.com/580/250/nature/1"></div>
+    <div class="parallax"><%= image_tag("banniere.png", size: "900x200") %></div>
   </div>
   <div class="container carousel col s6">
   <% Product.all.each do |product| %>

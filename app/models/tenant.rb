@@ -15,45 +15,51 @@ class Tenant < ActiveRecord::Base
   validate :already_rented
 
   def date_start_sup_end
-    if self.date_start > self.date_end
-      errors.add(:date_start, "La date de début doit être avant la date de fin")
+    if self.date_start != nil and self.date_end != nil
+      if self.date_start > self.date_end
+        errors.add(:date_start, "La date de début doit être avant la date de fin")
+      end
     end
   end
 
   def date_must_not_be_tenant
     product = Product.find(product_id)
-    if self.date_start < product.date_start or self.date_end > product.date_end 
-      errors.add(:date_start_end, "La location est entre le #{product.date_start} et le #{product.date_end}")
+    if self.date_start != nil and self.date_end != nil
+      if self.date_start < product.date_start or self.date_end > product.date_end 
+        errors.add(:date_start_end, "La location est entre le #{product.date_start} et le #{product.date_end}")
+      end
     end
   end
 
   def already_rented
-    product = Product.find(product_id)
-    tenantsExitIds = Tenant.where(product: product)
-    tenantExisting = Tenant.where(id: tenantsExitIds)
+    if self.date_start != nil and self.date_end != nil
+      product = Product.find(product_id)
+      tenantsExitIds = Tenant.where(product: product)
+      tenantExisting = Tenant.where(id: tenantsExitIds)
 
-    datesRequire = []
-    datesExisting = []
+      datesRequire = []
+      datesExisting = []
 
-    ((self.date_start)..self.date_end).each {|d| datesRequire << d }
+      ((self.date_start)..self.date_end).each {|d| datesRequire << d }
 
-    tenantExisting.each do |te|
-      datesRequire.each do |date|
-        if date >= te.date_start and date <= te.date_end
-          datesExisting << date
+      tenantExisting.each do |te|
+        datesRequire.each do |date|
+          if date >= te.date_start and date <= te.date_end
+            datesExisting << date
+          end
         end
       end
-    end
 
-    if datesExisting.count > 0
-      msg = "Les dates suivantes sont déjà prises : "
-      datesExisting.each_with_index do |d, i|
-        msg = msg + d.to_s
-        if i != (datesExisting.count - 1)
-          msg = msg + ', '
+      if datesExisting.count > 0
+        msg = "Les dates suivantes sont déjà prises : "
+        datesExisting.each_with_index do |d, i|
+          msg = msg + d.to_s
+          if i != (datesExisting.count - 1)
+            msg = msg + ', '
+          end
         end
+        errors.add(:date_error, msg)
       end
-      errors.add(:date_error, msg)
     end
   end
 
