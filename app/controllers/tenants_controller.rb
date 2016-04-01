@@ -18,6 +18,7 @@ class TenantsController < ApplicationController
     if params[:id] != nil
       @product = Product.find(params[:id])
     end
+    
     @tenant = Tenant.new
 
     tenantsExitIds = Tenant.where(product: @product)
@@ -26,12 +27,13 @@ class TenantsController < ApplicationController
     @events = []
     @events << {:id => @product.id, :title => "Début", :start => "#{@product.date_start}",:end => "#{@product.date_start+1}" }
     @events << {:id => @product.id, :title => "Fin", :start => "#{@product.date_end}",:end => "#{@product.date_end+1}" }
+
     @tenantExisting.each do |t|
       @events << {:id => t.id, :title => "Loué", :start => "#{t.date_start}",:end => "#{t.date_end+1}" }
     end
 
     respond_to do |format|
-      format.html
+      format.html { render action: 'new'}
       format.json { render json: @events }
     end
   end

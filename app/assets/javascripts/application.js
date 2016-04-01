@@ -11,15 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require materialize-sprockets
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require materialize-sprockets
 //= require_tree
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/lang-all
+//= require turbolinks
 
-$(document).ready(function(){
+$(function(){
 
   $('#element_calendar').hide();
   $('.carousel').carousel();
