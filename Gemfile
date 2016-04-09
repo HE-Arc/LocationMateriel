@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+#Authentification et enregistrement
+gem 'devise'
 
 #slim rails for view
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'

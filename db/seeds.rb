@@ -10,16 +10,16 @@ Product.create(title: 'Test',
 								description: 'Description du test', 
 								price: '19.50', 
 								renter: 'dista', 
-								date_start: '12/01/2016', 
-								date_end: '31/01/2016', 
+								date_start: '12/12/2016', 
+								date_end: '31/12/2016', 
 								condition: '')
 
 Product.create(title: 'Prod2', 
 								description: 'Description du prod2', 
 								price: '16.50', 
 								renter: 'dista', 
-								date_start: '12/03/2016', 
-								date_end: '31/03/2016', 
+								date_start: '12/12/2016', 
+								date_end: '31/12/2016', 
 								condition: '')
 
 Question.create(question: 'est-ce que ca marche ?',
@@ -43,25 +43,3 @@ Question.create(question: 'Atchoum ?',
 								date: '12/12/2012 10:12:40',
 								title: 'Question 3',
 								product_id: 2)
-
-Tenant.create(lastname: 'Daniel',
-      				firstname: 'Dupond',
-      				address: 'Salut 18',
-      				city: 'Les prés',
-      				npa: '2654',
-      				email: 'coucou@gmail.com',
-      				date_start: '12/04/2016',
-      				date_end: '14/04/2016',
-      				utilisation: 'On verra bien',
-      				product_id: 2)
-
-Tenant.create(lastname: 'Daniel',
-      				firstname: 'Dupont',
-      				address: 'Salut 18',
-      				city: 'Les prés',
-      				npa: '2654',
-      				email: 'hello@gmail.com',
-      				date_start: '15/03/2016',
-      				date_end: '18/03/2016',
-      				utilisation: 'On verra bien aussi, pas pressé',
-      				product_id: 2)

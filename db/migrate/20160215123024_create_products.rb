@@ -8,8 +8,9 @@ class CreateProducts < ActiveRecord::Migration
       t.date :date_start
       t.date :date_end
       t.text :condition
-
       t.timestamps null: false
+      t.belongs_to :users, index:true
     end
+    add_index :products, :user_id
   end
 end
