@@ -33,6 +33,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+
+#slim rails for view
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'
+
+#simple Form
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
