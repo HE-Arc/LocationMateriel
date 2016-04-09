@@ -13,7 +13,16 @@ class ProductMailer < ApplicationMailer
     mail to: "leonardo.distasio@he-arc.ch", subject: 'Demande de location'
   end
 
-  def location_product_status(product)
+  def tenant_proposed_confirm(tenant, product)
+    @tenant = tenant
+    @product = product
 
-  end
+    mail to: tenant.email, subject: 'Location confirmé'
+end
+
+  def tenant_proposed_refused(tenant, product)
+    @tenant = tenant
+    @product = product
+
+    mail to: tenant.email, subject: 'Location rejeté'
 end
