@@ -2,11 +2,18 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all
+    @search = Search.new(:product, params[:search], :per_page => 2)
+    @search.order = 'last_name'
+    @product = @search.run
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @product }
+    end
   end
 
   def show
   @product = Product.joins(:questions).find(params[:id])
-
   end
 
   def edit
@@ -14,6 +21,13 @@ class ProductsController < ApplicationController
 
   def update
   end
+
+  #def search
+   # title = params[:title]
+    #description = params[:description]
+    #price = params[:price]
+    #@product = Product.search(title, description, price)
+  #end
 
   def new
     @product= Product.new

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+ 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   #get 'products/show'
 
@@ -20,7 +21,10 @@ Rails.application.routes.draw do
 
   root 'home#home'
 
- # get '/products/new' => 'products#new', as: :products_new
+  #get '/products/index' => 'products#index', as: :product
+  #get '/products/search' => 'products#search', as: :products_search
+
+  #get '/products/new' => 'products#new', as: :products_new
   #get '/products/:id' => 'products#show', as: :product
   #get '/products/:id/new_question' => 'questions#new', as: :new_question
   #get '/tenants/new/:id' => 'tenants#new', as: :location_article

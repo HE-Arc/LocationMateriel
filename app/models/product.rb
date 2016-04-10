@@ -14,4 +14,24 @@ class Product < ActiveRecord::Base
                     default_url: ':style/default.png'
 
   validates_attachment_content_type :image, content_type: /^image\/.*$/
+
+
+
+
+#  def self.search(title, description, price)
+#    if title.present?
+#
+#       paginate :conditions => ['title LIKE ? AND description LIKE ? AND price ?', "%#{title}%", "%#{description}%", title],  #                      :per_page => 20,
+#                     :order => 'created_at DESC',
+#                    :page => @page,
+#                   :total_entries => 10
+
+#    else
+#   paginate :conditions => ['title LIKE ? AND description LIKE ?', "%#{title}%", "%#{description}%"],
+#                  :per_page => 20,
+#                 :order => 'created_at DESC',
+#                :page => @page,
+#               :total_entries => 10                
+# end
+#end
 end
