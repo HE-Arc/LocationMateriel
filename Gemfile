@@ -29,28 +29,29 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Calendar for location
-gem 'fullcalendar-rails'
-gem 'momentjs-rails'
-
-#administration 
-gem 'rails_admin'
-
-#Authentification et enregistrement
-gem 'devise'
-
-#slim rails for view
-gem 'slim-rails', '~> 3.0', '>= 3.0.1'
-
-#simple Form
-gem 'simple_form', '~> 3.2', '>= 3.2.1'
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'puma'
+
+#administration 
+gem 'rails_admin'
+
+gem 'rails-simple-search'
+
+# Calendar for location
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
+gem 'cancan', '~> 1.6', '>= 1.6.10'
+
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+
+#authentification 
+gem 'devise'
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
@@ -67,3 +68,4 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
 end
+

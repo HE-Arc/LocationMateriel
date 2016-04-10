@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   def index
     @product = Product.all
     @search = Search.new(:product, params[:search], :per_page => 2)
-    @search.order = 'last_name'
+    @search.order = 'title'
     @product = @search.run
 
     respond_to do |format|
