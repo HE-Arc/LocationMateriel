@@ -18,7 +18,7 @@ class ProductMailer < ApplicationMailer
     @product = product
 
     mail to: tenant.email, subject: 'Location confirmé'
-end
+  end
 
   def tenant_proposed_refused(tenant, product)
     @tenant = tenant

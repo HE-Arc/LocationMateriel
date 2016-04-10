@@ -39,7 +39,6 @@ class ProductsController < ApplicationController
       flash.now[:error]="les champs du produit ont été ,mal remplis"
       render "new"
     end
-
   end
 
   def destroy
@@ -47,7 +46,7 @@ class ProductsController < ApplicationController
 
   protected
   def products_params
-    params.require(:product).permit(:title, :description, :price, :renter, :condition, :image)
+    params.require(:product).permit(:title, :description, :price, :renter, :date_start, :date_end, :condition, :image)
   end  
 
   

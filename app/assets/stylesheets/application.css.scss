@@ -2,7 +2,10 @@
 *= require fullcalendar
 *= require fullcalendar.print
 */
-
+/*
+ *= require jquery-ui
+ */
+ 
 @import "materialize/components/color";
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
