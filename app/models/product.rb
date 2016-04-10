@@ -16,7 +16,9 @@ class Product < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /^image\/.*$/
 
 
-
+def self.search(search)
+  where("title LIKE ?", "%#{search}%") 
+end
 
 #  def self.search(title, description, price)
 #    if title.present?

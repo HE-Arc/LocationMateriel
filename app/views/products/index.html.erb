@@ -1,12 +1,27 @@
 <h2>Rechercher Produit</h2>
-<%= form_for @search, :url => "/product/index" do |f| %>
-  <%= f.label "Title" %> 
-  <%= f.text_field 'title' %> 
-  <br/>
-  <%= f.label "price" %> 
-  <%= f.text_field 'price' %> 
-  <%= f.label "Page" %> 
-  <%= f.select 'page', @search.pages_for_select  %> 
-  <br/>
-  <%= f.submit "search" %>
+  <%= form_tag(products_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Product" %>
+  <%= submit_tag "Search" %>
 <% end %>
+<% if @products.present? %>
+  <%= render @products %>
+<% else %>
+  <p>There are no product containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+<% @product.each do |product| %>
+ <div class="col s8 m6 l4">
+    <div class="card z-depth-3">
+      <div class="card-image">
+        <%= image_tag product.image.url(:thumb), size: '30x30', class: "responsive-img" %>
+        <span class="card-title"><%= link_to product.title, product %></span>
+      </div>
+      <div class="card-content truncate">
+        <p><%= product.description %></p>
+      </div>
+      <div class="card-action blue lighten-2">
+        <p class="center"><%= link_to "Louer l'article ici", product, class: 'white-text'  %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+

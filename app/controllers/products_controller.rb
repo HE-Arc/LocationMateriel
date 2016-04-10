@@ -2,18 +2,15 @@ class ProductsController < ApplicationController
 
   def index
     @product = Product.all
-    @search = Search.new(:product, params[:search], :per_page => 2)
-    @search.order = 'title'
-    @product = @search.run
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @product }
+    if params[:search]
+      @product = Product.search(params[:search]).order("created_at DESC")
+    else
+     @product = Product.all.order('created_at DESC')
     end
   end
 
   def show
-  @product = Product.joins(:questions).find(params[:id])
+    @product = Product.joins(:questions).find(params[:id])
   end
 
   def edit
