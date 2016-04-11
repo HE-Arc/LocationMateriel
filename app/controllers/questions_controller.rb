@@ -26,9 +26,7 @@ class QuestionsController < ApplicationController
         @product = Product.find(@question.product_id)
 
         format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-
-        
+        format.json { render json: @question.errors, status: :unprocessable_entity }        
       end
     end
   end

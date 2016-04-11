@@ -25,4 +25,5 @@ class ProductMailer < ApplicationMailer
     @product = product
 
     mail to: tenant.email, subject: 'Location rejeté'
+  end
 end

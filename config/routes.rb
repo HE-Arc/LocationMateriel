@@ -26,10 +26,10 @@ Rails.application.routes.draw do
 
   #get '/products/new' => 'products#new', as: :products_new
   #get '/products/:id' => 'products#show', as: :product
-  #get '/products/:id/new_question' => 'questions#new', as: :new_question
-  #get '/tenants/new/:id' => 'tenants#new', as: :location_article
+  get '/products/:id/new_question' => 'questions#new', as: :new_question
+  get '/tenants/new/:id' => 'tenants#new', as: :location_article
   
-  #post '/questions' => 'questions#create', as: :create_question
+  post '/questions' => 'questions#create', as: :create_question
 
   #post '/tenants/new/:id' => 'tenants#create', as: :create_tenant
 

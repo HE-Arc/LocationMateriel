@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 20160408165308) do
     t.integer  "product_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.boolean  "status"
   end
 
   add_index "tenants", ["product_id"], name: "index_tenants_on_product_id", using: :btree

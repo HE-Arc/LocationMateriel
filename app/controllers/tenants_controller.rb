@@ -46,7 +46,7 @@ class TenantsController < ApplicationController
   # POST /tenants.json
   def create
     @tenant = Tenant.new(tenant_params)
-    @product = Product.joins(:questions).find(@tenant.product_id)
+    @product = Product.find(@tenant.product_id)
 
     respond_to do |format|
       if @tenant.save

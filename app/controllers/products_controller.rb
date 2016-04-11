@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.joins(:questions).find(params[:id])
+    @product = Product.find(params[:id])
   end
 
   def edit
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     @product= Product.new(products_params)
 
     if @product.save
-      redirect_to @product, success: "Produit créer !!!"
+      redirect_to @product, success: "Produit créé !!!"
     else 
       flash.now[:error]="les champs du produit ont été ,mal remplis"
       render "new"
