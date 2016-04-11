@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
     @product= Product.new(products_params)
 
     if @product.save
-      redirect_to @product, success: "Produit créé !!!"
+      redirect_to @product, notice: "Produit créé !!!"
     else 
       flash.now[:error]="les champs du produit ont été ,mal remplis"
       render "new"

@@ -3,7 +3,7 @@
     <div class="parallax"></div>
   </div>-->
   <div class="container carousel col s6">
-  <% Product.all.each do |product| %>
+  <% @newProduct.each do |product| %>
     <%= link_to image_tag(product.image.url(:thumb)), product, {:class => "carousel-item"} %>
   <% end %>
   </div>
@@ -15,7 +15,7 @@
   <div class="col s8 m6 l4">
     <div class="card z-depth-3">
       <div class="card-image">
-        <%= image_tag product.image.url(:thumb), size: '30x30', class: "responsive-img" %>
+        <%= image_tag product.image.url(:thumb), size: '150x150', class: "responsive-img" %>
         <span class="card-title"><%= link_to product.title, product %></span>
       </div>
       <div class="card-content truncate">
