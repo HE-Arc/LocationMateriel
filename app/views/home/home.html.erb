@@ -1,12 +1,13 @@
 <% content_for :head do %>
-  <<div class="parallax-container">
-  <div class="parallax"><%= image_tag("logo.png", size: "900x400") %></div>  </div>
-  <div class="container carousel col s6">
+<div class="parallax-container">
+  <div class="parallax"><%= image_tag("logo.png", size: "900x400") %></div>  
+</div>
+<div class="container carousel col s6">
   <% @new_products.each do |product| %>
     <%= link_to image_tag(product.image.url(:thumb)), product, {:class => "carousel-item"} %>
   <% end %>
-  </div>
-  <div class="divider"></div>
+</div>
+<div class="divider"></div>
 <% end %>
 
 <section class="section">
