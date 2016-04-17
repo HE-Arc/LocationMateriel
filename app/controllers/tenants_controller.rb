@@ -21,7 +21,7 @@ class TenantsController < ApplicationController
     
     @tenant = Tenant.new
 
-    tenantsExitIds = Tenant.where(product: @product)
+    tenantsExitIds = Tenant.where(product: @product).where.not(confirm_location: 2)
     @tenantExisting = Tenant.where(id: tenantsExitIds)
 
     @events = []
@@ -40,6 +40,41 @@ class TenantsController < ApplicationController
 
   # GET /tenants/1/edit
   def edit
+  end
+
+  def confirm
+    @tenant = Tenant.find(params[:id])
+    @product = @tenant.product
+    @tenant.confirm_location = 1
+
+    respond_to do |format|
+      if @tenant.save
+        ProductMailer.tenant_proposed_confirm(@tenant, @product).deliver_later
+
+        format.html { render action: 'index', notice: 'La location a été confirmée.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render action: 'index', notice: 'Une erreur c\'est produite.'}
+        format.json { render json: @tenant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def refuse
+    tenant = Tenant.destroy(params[:id])
+    product = tenant.product
+
+    respond_to do |format|
+      if tenant.save
+        ProductMailer.tenant_proposed_refused(tenant, product).deliver_now
+
+        format.html { render :index, notice: 'La location a été refusée.' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render action: 'index', notice: 'Une erreur c\'est produite.'}
+        format.json { render json: @tenant.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /tenants

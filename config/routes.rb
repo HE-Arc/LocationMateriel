@@ -14,8 +14,10 @@ Rails.application.routes.draw do
 
   #get 'products/destroy'
 
-  resources :tenants
+  get '/tenants/:id/confirm' => 'tenants#confirm', as: :tenants_confirm
+  get '/tenants/:id/refuse' => 'tenants#refuse', as: :tenants_refuse
 
+  resources :tenants
   
   resources :products
 

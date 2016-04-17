@@ -10,9 +10,9 @@ class Tenant < ActiveRecord::Base
   validates :date_start, presence: { message: "Insérer une date de début" }
   validates :date_end, presence: { message: "Insérer une date de fin" }
   validates :utilisation, presence: { message: "Indiquer l'utilisation" }
-  validate :date_start_sup_end
-  validate :date_must_not_be_tenant
-  validate :already_rented
+  validate :date_start_sup_end, :on => :create
+  validate :date_must_not_be_tenant, :on => :create
+  validate :already_rented, :on => :create
 
   def date_start_sup_end
     if self.date_start != nil and self.date_end != nil

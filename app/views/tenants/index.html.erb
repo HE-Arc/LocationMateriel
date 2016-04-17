@@ -2,6 +2,7 @@
 <h1>Confirmer la location </h1>
 <section class="section">
 <% Tenant.all.each do |tenant| %>
+  <% if tenant.confirm_location == 0 %>
   <div class="col s8 m6 l4">
     <div class="card z-depth-3">
       <div class="card-content truncate">
@@ -16,12 +17,13 @@
         <p><%= tenant.utilisation %></p>
       </div>
       <div class="card-action blue lighten-2">
-        <p class="center"><%= link_to "Confirmer la location", tenant, class: 'white-text'  %></p>
+        <p class="center"><%= link_to "Confirmer la location", tenants_confirm_path(tenant), class: 'white-text'  %></p>
       </div>
       <div class="card-action red lighten-2">
-        <p class="center"><%= link_to "Refuser la location", tenant, class: 'white-text'  %></p>
+        <p class="center"><%= link_to "Refuser la location", tenants_refuse_path(tenant), class: 'white-text'  %></p>
       </div>
     </div>
   </div>
+  <% end %>
 <% end %>
 </section>
