@@ -33,6 +33,19 @@ class Tenant < ActiveRecord::Base
 
   def already_rented
     if self.date_start != nil and self.date_end != nil
+      # FIXME: Ceci peut se faire uniquement en SQL.
+      #
+      # SELECT COUNT(*) FROM tenants
+      # WHERE product_id = @product_id
+      #   AND (date_start < @date_end
+      #     OR date_end < @date_start)
+      #
+      # Le message d'erreur super compliqué n'est pas utile
+      # dans le cas où le formulaire de saisie est bien fait.
+      #
+      # Autre problème possible, cette validation + le create
+      # devraient se faire dans une transation, avec un verrou
+      # sur le produit / mise en location.
       product = Product.find(product_id)
       tenantsExitIds = Tenant.where(product: product)
       tenantExisting = Tenant.where(id: tenantsExitIds)
